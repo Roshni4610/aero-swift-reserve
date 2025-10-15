@@ -17,17 +17,17 @@ const Index = () => {
             <span className="text-2xl font-bold text-white">SkyWings</span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-white hover:text-white/80 transition-colors font-medium">
+            <a href="/flights" className="text-white hover:text-white/80 transition-colors font-medium">
               Flights
             </a>
-            <a href="#" className="text-white hover:text-white/80 transition-colors font-medium">
+            <a href="#destinations" className="text-white hover:text-white/80 transition-colors font-medium">
               Destinations
             </a>
-            <a href="#" className="text-white hover:text-white/80 transition-colors font-medium">
-              Deals
+            <a href="/my-bookings" className="text-white hover:text-white/80 transition-colors font-medium">
+              My Bookings
             </a>
-            <a href="#" className="text-white hover:text-white/80 transition-colors font-medium">
-              Contact
+            <a href="/auth" className="text-white hover:text-white/80 transition-colors font-medium">
+              Sign In
             </a>
           </nav>
         </div>
@@ -68,7 +68,9 @@ const Index = () => {
       <Features />
 
       {/* Featured Destinations */}
-      <FeaturedDestinations />
+      <div id="destinations">
+        <FeaturedDestinations />
+      </div>
 
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12 px-4">

@@ -14,7 +14,163 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          booking_date: string
+          booking_reference: string
+          created_at: string
+          flight_id: string
+          id: string
+          status: string
+          total_passengers: number
+          total_price: number
+          user_id: string
+        }
+        Insert: {
+          booking_date?: string
+          booking_reference: string
+          created_at?: string
+          flight_id: string
+          id?: string
+          status?: string
+          total_passengers: number
+          total_price: number
+          user_id: string
+        }
+        Update: {
+          booking_date?: string
+          booking_reference?: string
+          created_at?: string
+          flight_id?: string
+          id?: string
+          status?: string
+          total_passengers?: number
+          total_price?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_flight_id_fkey"
+            columns: ["flight_id"]
+            isOneToOne: false
+            referencedRelation: "flights"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      flights: {
+        Row: {
+          aircraft_type: string | null
+          airline: string
+          arrival_time: string
+          available_seats: number
+          class_type: string
+          created_at: string
+          departure_time: string
+          destination: string
+          flight_number: string
+          id: string
+          origin: string
+          price: number
+        }
+        Insert: {
+          aircraft_type?: string | null
+          airline: string
+          arrival_time: string
+          available_seats: number
+          class_type?: string
+          created_at?: string
+          departure_time: string
+          destination: string
+          flight_number: string
+          id?: string
+          origin: string
+          price: number
+        }
+        Update: {
+          aircraft_type?: string | null
+          airline?: string
+          arrival_time?: string
+          available_seats?: number
+          class_type?: string
+          created_at?: string
+          departure_time?: string
+          destination?: string
+          flight_number?: string
+          id?: string
+          origin?: string
+          price?: number
+        }
+        Relationships: []
+      }
+      passengers: {
+        Row: {
+          booking_id: string
+          created_at: string
+          date_of_birth: string
+          first_name: string
+          id: string
+          last_name: string
+          nationality: string | null
+          passport_number: string | null
+          seat_number: string | null
+        }
+        Insert: {
+          booking_id: string
+          created_at?: string
+          date_of_birth: string
+          first_name: string
+          id?: string
+          last_name: string
+          nationality?: string | null
+          passport_number?: string | null
+          seat_number?: string | null
+        }
+        Update: {
+          booking_id?: string
+          created_at?: string
+          date_of_birth?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          nationality?: string | null
+          passport_number?: string | null
+          seat_number?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "passengers_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

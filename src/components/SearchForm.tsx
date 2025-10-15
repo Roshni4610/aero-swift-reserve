@@ -15,8 +15,16 @@ const SearchForm = () => {
   const [tripType, setTripType] = useState("round-trip");
 
   const handleSearch = () => {
-    // Handle search logic here
-    console.log("Searching flights...");
+    // Navigate to flights page with search parameters
+    const params = new URLSearchParams();
+    
+    const fromInput = document.getElementById("from") as HTMLInputElement;
+    const toInput = document.getElementById("to") as HTMLInputElement;
+    
+    if (fromInput?.value) params.append("origin", fromInput.value);
+    if (toInput?.value) params.append("destination", toInput.value);
+    
+    window.location.href = `/flights?${params.toString()}`;
   };
 
   return (
